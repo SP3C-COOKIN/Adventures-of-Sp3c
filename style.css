@@ -1,0 +1,114 @@
+
+/* ============================================
+   TYPOGRAPHY
+   Fonts and text sizing for each element
+   ============================================ */
+
+h1 {
+    color: red;
+    text-align: center;
+    font-family: 'Cinzel', serif;        /* serif = fallback font if Cinzel fails to load */
+}
+
+h3 {
+    font-family: 'Philosopher', serif;
+}
+
+p {
+    font-family: 'Architects Daughter', serif;
+    font-size: 18px;                     /* browser default for p is too small, overriding here */
+}
+
+
+/* ============================================
+   BODY — the root container of the whole page
+   ============================================ */
+
+body {
+    text-align: center;
+    margin: 0;                           /* removes the default gap between content and browser edges */
+    min-height: 100vh;                   /* 100vh = full viewport height, so background covers the whole screen not just the text area */
+
+    /* layered background: dark tint on top of image so text stays readable */
+    background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+                      url('background.jpg');
+    background-size: cover;              /* scales image to fill the whole screen without tiling */
+    background-repeat: no-repeat;        /* safety net — cover already prevents tiling but this makes it explicit */
+    background-position: center;         /* crop from center, not from a corner */
+    background-attachment: fixed;        /* background stays still as you scroll */
+
+    /* flexbox turns body into a stage for its children */
+    display: flex;
+    flex-direction: column;              /* children stack vertically */
+    align-items: center;                 /* children are centered horizontally */
+}
+
+
+/* ============================================
+   INTRO NOTE — small golden text above the card
+   ============================================ */
+
+.intro-note {
+    font-size: 15px;
+    color: gold;
+}
+
+
+/* ============================================
+   HEADER CARD — the clouds card at the top
+   ============================================ */
+
+.header-card {
+    /* layered background: tint over clouds image */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.25)),
+                      url('clouds.jpg');
+    background-position: center;
+     background-size: cover;
+
+    backdrop-filter: blur(7px);                      /* frosted glass blur effect */
+    border: 1px solid rgba(255,255,255,0.2);         /* subtle white border to define the card edges */
+    border-radius: 16px;                             /* sands down the sharp corners — same radius on all 4 */
+    padding: 30px;                                   /* breathing room between content and card edges */
+
+    display: inline-block;                           /* shrinks card to fit its content instead of stretching full width */
+    margin: 0 auto;                                  /* splits leftover space equally on both sides — centers the card */
+}
+
+
+/* ============================================
+   INTRODUCTION CARD — the trapezoid bee card below
+   ============================================ */
+
+.Introduction-card {
+    /* layered background: tint over flower image */
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                      url('flower Boi.jpg');
+    background-position: center;
+    background-size: cover;
+
+    backdrop-filter: blur(10px);                     /* frosted glass effect, slightly stronger than header */
+    border: 1px solid rgba(255,255,255,0.7);         /* same subtle border as header card */
+    border-radius: 0 0 16px 16px;                    /* clockwise: top-left, top-right, bottom-right, bottom-left */
+                                                     /* top corners are sharp so it connects flush to the header card above */
+
+    padding: 30px 80px;                              /* two values: vertical(top+bottom) horizontal(left+right) */
+    width: 80%;                                      /* manually sets width — unlike inline-block which auto-fits content */
+
+    clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);  /* cuts the div into a trapezoid shape */
+}
+
+/* the divider line inside the introduction card */
+.Introduction-card hr {
+    border: none;                                    /* wipes the browser's default ugly 3D hr style */
+    border-top: 1px solid rgba(255,255,255,0.25);   /* rebuilds it as one clean, subtle white line */
+    margin: 10px 0 20px 0;                                  /* 10px gap above and below the line */
+}
+
+#multiverse {
+    display: block;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 16px 16px;
+    background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
+}
