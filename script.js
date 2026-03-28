@@ -1,114 +1,96 @@
-const canvas = document.getElementById("multiverse") 
-/* HTML has a canvas with id="multiverse" — JS reaches into the page and grabs it by that name tag */
+/* Making the canvas and getting the tools ready*/
+const canvas = document.getElementById("multiverse")
+const ctx = canvas.getContext('2d')
 
-const ctx = canvas.getContext('2d') 
-/* canvas is the whiteboard, ctx is the marker — all drawing tools live inside ctx */
+/* setting the canvas's width and height*/
+canvas.width = window.innerWidth
+canvas.height = 500
 
-canvas.width = window.innerWidth 
-/* window = the browser itself. innerWidth = how wide it currently is. Canvas stretches to fill it exactly */
-
-canvas.height = 500 
-/* hardcoded height — 500px tall */
-
+/* Creating different worlds with properties */
 let Continuum_Database = [
     {
-        name: "Continumm",
-        color: "#a78bfa", 
-        anchorX: canvas.width * 0.25,
-        anchorY: canvas.height * 0.4,
+        name: "Continuum",
+        color: "#a78bfa",
+        x: Math.random() * canvas.width, /* random position for the world acc to the width */
+        y: Math.random() * canvas.height, /* random position for the world acc to the length */
+        angle: Math.random() * Math.PI * 2, /* at what angle does the world start */
+        speed: 1.2, /* how fast it moves */
+        turnSpeed: 0.09, /* at what intensity does it turn */
+    },
+    {
+        name: "Worm King",
+        color: "#34d399",
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        angle: Math.random() * Math.PI * 2,
+        speed: 1.2,
+        turnSpeed: 0.09,
+    },
+    {
+        name: "SP3C'S Journal Directory",
+        color: "#60a5fa",
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        angle: Math.random() * Math.PI * 2,
+        speed: 1.2,
+        turnSpeed: 0.09,
     }
-    {name: "Worm King", color: "#34d399", x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: Math.random() * 4 - 2, vy: Math.random() * 4 - 2},
-    {name: "SP3C'S Journal Directory", color: "#60a5fa", x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: Math.random() * 4 - 2, vy: Math.random() * 4 - 2},
 ]
 
-function animate() {
-/* this function runs 60 times per second — wipe, update, redraw. that's all animation ever is */
+function animate() { /* Creating an animate function which we can warp over all the code below and can use it later to repeat it 60 seconds but idk why 60 seconds or why and how we do all the repeating and like what the hell */
+    ctx.clearRect(0, 0, canvas.width, canvas.height) /* keep clearing the shit we leave behind but what do the 0,0 mean and width and height too why are they there */
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    /* wipe the entire canvas clean every frame FIRST — without this, circles leave permanent trails
-       because canvas never erases itself. clearRect goes at the TOP so we wipe before drawing */
+    Continuum_Database.forEach(world => { /* we take continumm database and do something here maybe say that do this thing written below to the worlds but idk what forEach is or what (world =>) does */
 
-    Continuum_Database.forEach(database => {
-    /* loop through every world object one by one — everything inside runs once per world per frame */
+        // glow — radial gradient fading outward from center
+        let glow = ctx.createRadialGradient(world.x, world.y, 0, world.x, world.y, 40) // we create glow and put some values for some reason idk why tho and what letglow does here 
+        glow.addColorStop(0, world.color + 'cc') // we add colorStop? what is colorStop? and what are all these values
+        glow.addColorStop(1, 'transparent') // then we add it again and change the values for some reason
+        ctx.beginPath() // we start the circle here? or we reset the past shit but idk what past shit and why
+        ctx.arc(world.x, world.y, 40, 0, Math.PI * 2) // idk what this does
+        ctx.fillStyle = glow // we are having it's color be "glow"
+        ctx.fill() // executes the circle
 
-        /* === GLOW BLOOM === */
-        /* a radial gradient = paint that starts bright at the center and fades to invisible at the edges */
-        /* like a spotlight. we use it to fake the soft glow around a star */
-        let glow = ctx.createRadialGradient(database.x, database.y, 0, database.x, database.y, 40)
-        /* args: centerX, centerY, innerRadius(0=single point), centerX, centerY, outerRadius(40=how far glow spreads) */
-        
-        glow.addColorStop(0, database.color + 'cc')
-        /* at the CENTER (0) — use the world's color at 80% opacity. 'cc' appended to hex = 80% opaque */
-        
-        glow.addColorStop(1, 'transparent')
-        /* at the OUTER EDGE (1) — fully invisible. so gradient goes bright center → invisible edge */
+        // solid core on top of glow
+        ctx.beginPath() // starting another circle?
+        ctx.arc(world.x, world.y, 20, 0, Math.PI * 2) //again new values for some reason
+        ctx.fillStyle = world.color // filling color and taking it from the objects / worlds
+        ctx.fill() // executing the circle
 
-        ctx.beginPath()
-        /* lift the pen — start a fresh shape, disconnect from anything drawn before */
-        
-        ctx.arc(database.x, database.y, 40, 0, Math.PI * 2)
-        /* describe a circle at this world's position, radius 40 (bigger than the solid ball) */
-        /* args: x, y, radius, startAngle(0), endAngle(Math.PI*2 = full circle) */
-        
-        ctx.fillStyle = glow
-        /* set the paint to the radial gradient instead of a flat color */
-        
-        ctx.fill()
-        /* paint it — big soft glowing halo */
+        // wall nudging — too close to edge, curve back inward
+        // movement
+    world.turnSpeed += (Math.random() - 0.5) * 0.005 // tbh idk what the whole block of this code does
+    world.turnSpeed = Math.max(-0.03, Math.min(0.03, world.turnSpeed)) // this too
+    world.angle += world.turnSpeed // this too
+    world.x += Math.cos(world.angle) * world.speed // this too
+    world.y += Math.sin(world.angle) * world.speed //this too
 
-        /* === SOLID CORE === */
-        /* paint a smaller solid circle on top of the glow — bright core sitting inside the bloom */
-        ctx.beginPath()
-        ctx.arc(database.x, database.y, 20, 0, Math.PI * 2)
-        /* same center, but radius 20 — half the size of the glow circle */
-        
-        ctx.fillStyle = database.color
-        /* flat solid color this time, no gradient */
-        
-        ctx.fill()
-        /* paint it — solid bright core on top of the soft glow */
-
-        /* === MOVEMENT === */
-        database.x = database.x + database.vx
-        database.y = database.y + database.vy
-        /* add velocity to position every frame — this is literally all movement ever is
-           position + velocity = new position. repeat 60 times per second = smooth animation */
-
-        /* === BOUNCING === */
-        /* when ball hits a wall — teleport it back to the boundary, then flip velocity direction */
-        /* teleport prevents the ball getting stuck vibrating at the wall (it would re-trigger every frame) */
-        /* flipping velocity: positive becomes negative (reverses direction). -database.vx handles both walls */
-        
-        if (database.x > canvas.width - 50) {
-            database.x = canvas.width - 50  /* teleport back inside */
-            database.vx = -database.vx      /* reverse horizontal direction */
-        }
-        if (database.x < 50) {
-            database.x = 50                 /* canvas starts at 0 on the left — 20 accounts for radius */
-            database.vx = -database.vx
-        }
-        if (database.y > canvas.height - 20) {
-            database.y = canvas.height - 20
-            database.vy = -database.vy      /* reverse vertical direction */
-        }
-        if (database.y < 50) {
-            database.y = 50
-            database.vy = -database.vy
-        }
-
-        /* === NAME LABEL === */
-        ctx.fillStyle = database.color  /* text same color as the world */
-        ctx.font = "12px serif"
-        ctx.textAlign = "center"        /* center text horizontally under the ball */
-        ctx.fillText(database.name, database.x, database.y + 30)
-        /* fillText args: what text, x position, y position */
-        /* database.y + 30 = 30 pixels below the ball's center */
-    })
-
-    requestAnimationFrame(animate)
-    /* before the browser paints the next screen refresh — call animate again
-       this is the snake eating its own tail. one line makes the whole thing run forever */
+// if they escape, push them back and reflect the angle
+if (world.x > canvas.width - 40) {  // if the world's position is more than canvas's width - 40 
+    world.x = canvas.width - 40 // then uh what is it here for?
+    world.angle = Math.PI - world.angle // tf is this for explain this whole if statement shit and all the if statements below
+}
+if (world.x < 40) {
+    world.x = 40
+    world.angle = Math.PI - world.angle
+}
+if (world.y > canvas.height - 40) {
+    world.y = canvas.height - 40
+    world.angle = -world.angle
+}
+if (world.y < 40) {
+    world.y = 40
+    world.angle = -world.angle
 }
 
-animate() 
-/* pull the trigger — start the whole machine */
+        // name label
+        ctx.fillStyle = world.color // color of the name of the world
+        ctx.font = "12px serif" //font
+        ctx.textAlign = "center" // placing them in center below the worlds
+        ctx.fillText(world.name, world.x, world.y + 30) // text is the world's name also is placed 30 pixels below the actual world
+    })
+
+    requestAnimationFrame(animate) // this is where it is called 60 times but idfk why maybe i dont understand functions enough
+}
+
+animate() // ended it but idk why we even started it

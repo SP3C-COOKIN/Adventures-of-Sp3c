@@ -31,7 +31,7 @@ body {
 
     /* layered background: dark tint on top of image so text stays readable */
     background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-                      url('background.jpg');
+                      url('images/background.jpg');
     background-size: cover;              /* scales image to fill the whole screen without tiling */
     background-repeat: no-repeat;        /* safety net — cover already prevents tiling but this makes it explicit */
     background-position: center;         /* crop from center, not from a corner */
@@ -43,11 +43,6 @@ body {
     align-items: center;                 /* children are centered horizontally */
 }
 
-
-/* ============================================
-   INTRO NOTE — small golden text above the card
-   ============================================ */
-
 .intro-note {
     font-size: 15px;
     color: gold;
@@ -57,11 +52,10 @@ body {
 /* ============================================
    HEADER CARD — the clouds card at the top
    ============================================ */
-
 .header-card {
     /* layered background: tint over clouds image */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.25)),
-                      url('clouds.jpg');
+                      url('images/clouds.jpg');
     background-position: center;
      background-size: cover;
 
@@ -82,7 +76,7 @@ body {
 .Introduction-card {
     /* layered background: tint over flower image */
     background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
-                      url('flower Boi.jpg');
+                      url('images/flower Boi.jpg');
     background-position: center;
     background-size: cover;
 
