@@ -113,6 +113,6 @@ btn.addEventListener("click", () => { // addEventListeend watches the button and
         btn.textContent = "⏸ Pause!" //and the button's content changes to "Stop it!"
     } else { // if it is playing
         music.pause(); // then pause the music
-        btn.textContent = " ▶ Play the Song"; // text changes to play the song
+        btn.textContent = " ▶ Play"; // text changes to play the song
     }
 });

@@ -43,8 +43,8 @@ body {
     position: relative;
     display: flex;    
     justify-content: center;
-    padding: 20px 20px 0px 120px;
-    min-height: 180px
+    padding: 20px 20px 0px 100px;
+    padding-right: 130px;
 }
 
 .header-card {
@@ -61,7 +61,7 @@ body {
 }
 
 .header-gif {
-    width: 80px;
+    width: 85px;
     height: auto;
 }
 
@@ -84,8 +84,8 @@ body {
 
 .jotaro-box {
     position: absolute;      /* yanked out of the flex flow */
-    left: 10px;
     top: 120px;
+    left: 1px;
     transform: translateY(-50%);  /* perfectly centers him vertically */
     display: flex;
     flex-direction: column;
