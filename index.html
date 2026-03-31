@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- don't know why they choosed this language as the main one throughout majority of the worlds lmao -->
+<html lang="en"> 
     <head>
         <title> Adventures of SPOOKI DOOKII!!!!</title>
         <link rel="stylesheet" href="style.css"> <!-- it connects our index.html file with style.css file-->
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Philosopher&family=Architects+Daughter&display=swap" rel="stylesheet">
     </head>
+
+
     <body>
-    <header class= "header-card">
+    <div class= "header-wrapper">
+
+        <div class="jotaro-box">
+            <img src="images/giphy.gif" class="header-gif"> 
+            <audio id="Afterthought" src="audio/Afterthought.flac"></audio>
+            <button id="music-btn"> ▶ Play the Song </button>
+        </div>
+
+        <header class="header-card">
         <h1>SP3C'S JOURNAL</h1>    
         <h3>Writing about my cool and weird adventures and experiences here heheeh!!</h3>
-    </header>
+        </header>
+
+    </div>
 
     <section class= "Introduction-card">
         <h3>Who even are you?</h3>
@@ -18,11 +30,13 @@
         </p>
         <hr>
         <p> I am a vagabond and an adventurer of the Reality, I go through different worlds and explore them. I work with the Mutli-Dimensional Startup <strong>"Continuum".</strong>
-            been working through the reality from indefinite amount of time I store information </p>
-
-        <!--Make a seperate page for continuum corporate and link it to the Bold word-->
+            been working through the reality from indefinite amount of time I store information </p> <!--Make a seperate page for continuum corporate and link it to the Bold word-->
     </section>
+
+    <h2 class ="Popular-Sections">Dive into the Journal's Popular Sections</h2>
         <canvas id="multiverse"></canvas>
+
+
         <script src="script.js"></script>
 
 </body>

@@ -34,7 +34,16 @@ let Continuum_Database = [
         angle: Math.random() * Math.PI * 2,
         speed: 1.2,
         turnSpeed: 0.09,
-    }
+    },
+    {
+        name: "The First Observer Hypothesis's Theory",
+        color: "#e5e7eb",
+        x: Math.random() * canvas.width, /* random position for the world acc to the width */
+        y: Math.random() * canvas.height, /* random position for the world acc to the length */
+        angle: Math.random() * Math.PI * 2, /* at what angle does the world start */
+        speed: 1.2, /* how fast it moves */
+        turnSpeed: 0.09, /* at what intensity does it turn */
+    },
 ]
 
 function animate() { /* Creating an animate function which we can warp over all the code below and can use it later to repeat it 60 seconds but idk why 60 seconds or why and how we do all the repeating and like what the hell */
@@ -59,8 +68,8 @@ function animate() { /* Creating an animate function which we can warp over all 
 
         // wall nudging — too close to edge, curve back inward
         // movement
-    world.turnSpeed += (Math.random() - 0.5) * 0.005 // tbh idk what the whole block of this code does
-    world.turnSpeed = Math.max(-0.03, Math.min(0.03, world.turnSpeed)) // this too
+    world.turnSpeed += (Math.random() - 0.5) * 0.005 // the value we get after the random number given by math.random() and it subtracting and multiplying and we add it to the base turnSpeed
+    world.turnSpeed = Math.max(-0.03, Math.min(0.03, world.turnSpeed)) //  this creates a barrier so the world doesnt reach a high or low speed (above 0.3 or below -0.3) first we check if the current turn value given manually, and see which one is smaller 0.3 (the value we set)
     world.angle += world.turnSpeed // this too
     world.x += Math.cos(world.angle) * world.speed // this too
     world.y += Math.sin(world.angle) * world.speed //this too
@@ -94,3 +103,16 @@ if (world.y < 40) {
 }
 
 animate() // ended it but idk why we even started it
+
+const music = document.getElementById("Afterthought"); // variable music is now assigned to the music file
+const btn = document.getElementById("music-btn"); // variable btn is assigned to the button
+
+btn.addEventListener("click", () => { // addEventListeend watches the button and when someone "clicks it"
+    if (music.paused) { // it checks whether the music is paused
+        music.play(); // if yes then it plays it
+        btn.textContent = "⏸ Pause!" //and the button's content changes to "Stop it!"
+    } else { // if it is playing
+        music.pause(); // then pause the music
+        btn.textContent = " ▶ Play the Song"; // text changes to play the song
+    }
+});

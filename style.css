@@ -1,9 +1,3 @@
-
-/* ============================================
-   TYPOGRAPHY
-   Fonts and text sizing for each element
-   ============================================ */
-
 h1 {
     color: red;
     text-align: center;
@@ -19,10 +13,6 @@ p {
     font-size: 18px;                     /* browser default for p is too small, overriding here */
 }
 
-
-/* ============================================
-   BODY — the root container of the whole page
-   ============================================ */
 
 body {
     text-align: center;
@@ -49,9 +39,14 @@ body {
 }
 
 
-/* ============================================
-   HEADER CARD — the clouds card at the top
-   ============================================ */
+.header-wrapper {
+    position: relative;
+    display: flex;    
+    justify-content: center;
+    padding: 20px 20px 0px 120px;
+    min-height: 180px
+}
+
 .header-card {
     /* layered background: tint over clouds image */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.25)),
@@ -62,16 +57,43 @@ body {
     backdrop-filter: blur(7px);                      /* frosted glass blur effect */
     border: 1px solid rgba(255,255,255,0.2);         /* subtle white border to define the card edges */
     border-radius: 16px;                             /* sands down the sharp corners — same radius on all 4 */
-    padding: 30px;                                   /* breathing room between content and card edges */
-
-    display: inline-block;                           /* shrinks card to fit its content instead of stretching full width */
-    margin: 0 auto;                                  /* splits leftover space equally on both sides — centers the card */
+    padding: 40px;                                   /* breathing room between content and card edges */
 }
 
+.header-gif {
+    width: 80px;
+    height: auto;
+}
 
-/* ============================================
-   INTRODUCTION CARD — the trapezoid bee card below
-   ============================================ */
+#music-btn {
+
+    background: rgba(96,165,250,0.2);
+    border: 1px solid rgba(96,165,250,0.5);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#music-btn:hover {
+    background: rgba(96,165,250,0.4);
+    box-shadow: 0 0 10px rgba(96,165,250,0.6);
+}
+
+.jotaro-box {
+    position: absolute;      /* yanked out of the flex flow */
+    left: 10px;
+    top: 120px;
+    transform: translateY(-50%);  /* perfectly centers him vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 100;
+}
+
 
 .Introduction-card {
     /* layered background: tint over flower image */
@@ -95,12 +117,41 @@ body {
 .Introduction-card hr {
     border: none;                                    /* wipes the browser's default ugly 3D hr style */
     border-top: 1px solid rgba(255,255,255,0.25);   /* rebuilds it as one clean, subtle white line */
-    margin: 10px 0 20px 0;                                  /* 10px gap above and below the line */
+    margin: 5px 0 5px 0;                                  /* 10px gap above and below the line */
 }
 
+
+
+.Popular-Sections {
+    padding: 5px 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255, 0.7);
+    text-align: center;
+    margin: 20px 0;
+    text-shadow:
+        0 0 5px rgba(96,165,250,0.5),
+        0 0 10px rgba(167,139,250,0.3);
+    background: transparent;
+}
+.Popular-Sections::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 1px;
+    margin: 10px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(167,139,250,0.5),
+        transparent
+    );
+}
 #multiverse {
     display: block;
-    margin-top: 20px;
+    margin-top: 5px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 0 0 16px 16px;
