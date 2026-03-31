@@ -43,11 +43,13 @@ body {
     position: relative;
     display: flex;    
     justify-content: center;
-    padding: 20px 20px 0px 100px;
-    padding-right: 130px;
+    align-items: center;
+    padding: 20px 20px 0px 50px;
+
 }
 
 .header-card {
+    position: relative;
     /* layered background: tint over clouds image */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.25)),
                       url('images/clouds.jpg');
@@ -57,11 +59,11 @@ body {
     backdrop-filter: blur(7px);                      /* frosted glass blur effect */
     border: 1px solid rgba(255,255,255,0.2);         /* subtle white border to define the card edges */
     border-radius: 16px;                             /* sands down the sharp corners — same radius on all 4 */
-    padding: 40px;                                   /* breathing room between content and card edges */
+    padding: 40px;
 }
 
 .header-gif {
-    width: 85px;
+    width: 30px;
     height: auto;
 }
 
@@ -85,13 +87,17 @@ body {
 .jotaro-box {
     position: absolute;      /* yanked out of the flex flow */
     top: 120px;
-    left: 1px;
+    left: -13%;
+    margin-right: 20px;
+
     transform: translateY(-50%);  /* perfectly centers him vertically */
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    z-index: 100;
+
+    z-index: 10;
 }
 
 
