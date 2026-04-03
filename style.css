@@ -1,37 +1,43 @@
 h1 {
-    color: red;
     text-align: center;
-    font-family: 'Cinzel', serif;        /* serif = fallback font if Cinzel fails to load */
-}
+    font-family: 'Cinzel', serif;        /* serif = fallback font if Cinzel fails to load */}
 
 h3 {
-    font-family: 'Philosopher', serif;
-}
+    font-family: 'Philosopher', serif;}
 
 p {
     font-family: 'Architects Daughter', serif;
-    font-size: 18px;                     /* browser default for p is too small, overriding here */
-}
+    font-size: 18px;                     /* browser default for p is too small, overriding here */}
 
 
+/* Main Body */
 body {
     text-align: center;
     margin: 0;                           /* removes the default gap between content and browser edges */
     min-height: 100vh;                   /* 100vh = full viewport height, so background covers the whole screen not just the text area */
-
-    /* layered background: dark tint on top of image so text stays readable */
-    background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-                      url('images/background.jpg');
-    background-size: cover;              /* scales image to fill the whole screen without tiling */
-    background-repeat: no-repeat;        /* safety net — cover already prevents tiling but this makes it explicit */
-    background-position: center;         /* crop from center, not from a corner */
-    background-attachment: fixed;        /* background stays still as you scroll */
 
     /* flexbox turns body into a stage for its children */
     display: flex;
     flex-direction: column;              /* children stack vertically */
     align-items: center;                 /* children are centered horizontally */
 }
+
+
+.Journal-Title {
+    color: #FF1919
+}
+
+
+.onigashima {
+/* layered background: dark tint on top of image so text stays readable */
+    background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+                      url('images/background_onigashima.jpeg');
+    background-size: cover;              /* scales image to fill the whole screen without tiling */
+    background-repeat: no-repeat;        /* safety net — cover already prevents tiling but this makes it explicit */
+    background-position: center;         /* crop from center, not from a corner */
+    background-attachment: fixed;        /* background stays still as you scroll */
+}
+
 
 .intro-note {
     font-size: 15px;
@@ -44,9 +50,9 @@ body {
     display: flex;    
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 0px 50px;
-
+    padding: 20px 20px 0px 70px;
 }
+
 
 .header-card {
     position: relative;
@@ -78,29 +84,26 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
 #music-btn:hover {
     background: rgba(96,165,250,0.4);
     box-shadow: 0 0 10px rgba(96,165,250,0.6);
 }
 
+
 .jotaro-box {
     position: absolute;      /* yanked out of the flex flow */
     top: 120px;
     left: -13%;
-    margin-right: 20px;
-
     transform: translateY(-50%);  /* perfectly centers him vertically */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-
-    z-index: 10;
 }
 
 
+/* Introduction Card */
 .Introduction-card {
     /* layered background: tint over flower image */
     background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
@@ -119,7 +122,6 @@ body {
     clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);  /* cuts the div into a trapezoid shape */
 }
 
-/* the divider line inside the introduction card */
 .Introduction-card hr {
     border: none;                                    /* wipes the browser's default ugly 3D hr style */
     border-top: 1px solid rgba(255,255,255,0.25);   /* rebuilds it as one clean, subtle white line */
@@ -127,7 +129,7 @@ body {
 }
 
 
-
+/* Popular-Sections */
 .Popular-Sections {
     padding: 5px 5px;
     font-family: 'Orbitron', sans-serif;
@@ -155,6 +157,9 @@ body {
         transparent
     );
 }
+
+
+/*Canvas*/
 #multiverse {
     display: block;
     margin-top: 5px;

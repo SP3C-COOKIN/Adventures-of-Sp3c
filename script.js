@@ -16,6 +16,8 @@ let Continuum_Database = [
         angle: Math.random() * Math.PI * 2, /* at what angle does the world start */
         speed: 1.2, /* how fast it moves */
         turnSpeed: 0.09, /* at what intensity does it turn */
+        link: "Continuum.html",
+
     },
     {
         name: "Worm King",
@@ -25,26 +27,30 @@ let Continuum_Database = [
         angle: Math.random() * Math.PI * 2,
         speed: 1.2,
         turnSpeed: 0.09,
+        link: "Worm-King.html",
     },
     {
         name: "SP3C'S Journal Directory",
-        color: "#60a5fa",
+        color: "#FF1919",
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         angle: Math.random() * Math.PI * 2,
         speed: 1.2,
         turnSpeed: 0.09,
+        link: "SP3C'S-Journal-Directory.html",
     },
     {
-        name: "The First Observer Hypothesis's Theory",
+        name: "The First Observer Hypothesis",
         color: "#e5e7eb",
         x: Math.random() * canvas.width, /* random position for the world acc to the width */
         y: Math.random() * canvas.height, /* random position for the world acc to the length */
         angle: Math.random() * Math.PI * 2, /* at what angle does the world start */
         speed: 1.2, /* how fast it moves */
         turnSpeed: 0.09, /* at what intensity does it turn */
+        link: "The-First-Observer-Hypothesis",
     },
 ]
+
 
 function animate() { /* Creating an animate function which we can warp over all the code below and can use it later to repeat it 60 seconds but idk why 60 seconds or why and how we do all the repeating and like what the hell */
     ctx.clearRect(0, 0, canvas.width, canvas.height) /* keep clearing the shit we leave behind but what do the 0,0 mean and width and height too why are they there */
@@ -104,6 +110,8 @@ if (world.y < 40) {
 
 animate() // ended it but idk why we even started it
 
+
+
 const music = document.getElementById("Afterthought"); // variable music is now assigned to the music file
 const btn = document.getElementById("music-btn"); // variable btn is assigned to the button
 
@@ -116,3 +124,77 @@ btn.addEventListener("click", () => { // addEventListeend watches the button and
         btn.textContent = " ▶ Play"; // text changes to play the song
     }
 });
+
+
+
+// Checks for a click, then subtracts the window's size from the canvas size 
+// and then save it in constant variables, after that put those values in checkBallClick function
+
+canvas.addEventListener("click", function(event) {
+    const rect = canvas.getBoundingClientRect();
+
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    checkBallClick(mouseX, mouseY);
+});
+
+
+// defining the function checkBallClick(mx, my), forEach world check the click's co-ordinate 
+// and subtract it with the ball's current position and use pythagorus theorem to 
+
+// defining the function checkBallClick(mx, my) — for every world in the database,
+// subtract the click's position from the world's center to get the horizontal and vertical gaps,
+// then use pythagoras to find the real diagonal distance between the click and the center, since normal horizontal and vertical gaps don't cut it out apparently
+// if that distance is less than 20 (the solid core radius), the click landed inside that world — open it
+
+
+function checkBallClick(mx, my) {
+    Continuum_Database.forEach(world => {
+        const dx = mx - world.x;
+        const dy = my - world.y;
+
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 20) {
+            openWorld(world);
+
+
+        }
+    });
+}
+
+
+function openWorld(world) {
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+        window.location.href = world.link;
+    }, 500);
+}
+
+canvas.addEventListener("mousemove", function(event) { // puts an event listener to check if the mouse moves and saves that info in event array
+    const Rect = canvas.getBoundingClientRect() // Rect stores the position and size of canvas in reference to the window
+    const mouseX = event.clientX - Rect.left; 
+    const mouseY = event.clientY - Rect.top;
+    
+    let hovering = false;
+
+    Continuum_Database.forEach(world => {
+        const dx = mouseX - world.x;
+        const dy = mouseY - world.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 20) {
+            hovering = true;
+        }
+});
+
+if (hovering) {
+    canvas.style.cursor = "pointer"
+}
+else {
+    canvas.style.cursor = "default"
+}
+});
+
