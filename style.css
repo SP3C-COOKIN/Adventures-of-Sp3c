@@ -1,14 +1,26 @@
 h1 {
     text-align: center;
-    font-family: 'Cinzel', serif;        /* serif = fallback font if Cinzel fails to load */}
+    font-family: 'Cinzel', serif;        /* serif = fallback font if Cinzel fails to load */
+    color: #0d0a1a;
+    }
+
 
 h3 {
-    font-family: 'Philosopher', serif;}
+    font-family: 'Philosopher', serif;
+      color: #c9b8ff;
+    }
+
 
 p {
     font-family: 'Architects Daughter', serif;
-    font-size: 18px;                     /* browser default for p is too small, overriding here */}
+    font-size: 18px;                     /* browser default for p is too small, overriding here */
+    color: #f0eaff;
+    }
 
+    
+    strong {
+    color: #a78bfa;
+    }
 
 /* Main Body */
 body {
@@ -22,12 +34,6 @@ body {
     align-items: center;                 /* children are centered horizontally */
 }
 
-
-.Journal-Title {
-    color: #FF1919
-}
-
-
 .onigashima {
 /* layered background: dark tint on top of image so text stays readable */
     background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
@@ -38,10 +44,8 @@ body {
     background-attachment: fixed;        /* background stays still as you scroll */
 }
 
-
-.intro-note {
-    font-size: 15px;
-    color: gold;
+.Journal-Title {
+    color: #e8c97a;
 }
 
 
@@ -50,22 +54,21 @@ body {
     display: flex;    
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 0px 70px;
+    padding: 20px 20px 0px 40px;
 }
-
 
 .header-card {
     position: relative;
     /* layered background: tint over clouds image */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.25)),
-                      url('images/clouds.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.20));
     background-position: center;
      background-size: cover;
 
-    backdrop-filter: blur(7px);                      /* frosted glass blur effect */
-    border: 1px solid rgba(255,255,255,0.2);         /* subtle white border to define the card edges */
+    backdrop-filter: blur(5px);                      /* frosted glass blur effect */
+    border: 1px solid rgba(167, 139, 250, 0.45);         /* subtle white border to define the card edges */
     border-radius: 16px;                             /* sands down the sharp corners — same radius on all 4 */
     padding: 40px;
+    font-size: 15px;
 }
 
 .header-gif {
@@ -107,12 +110,12 @@ body {
 .Introduction-card {
     /* layered background: tint over flower image */
     background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
-                      url('images/flower Boi.jpg');
+                      url('images/kashimo.jpg');
     background-position: center;
     background-size: cover;
 
-    backdrop-filter: blur(10px);                     /* frosted glass effect, slightly stronger than header */
-    border: 1px solid rgba(255,255,255,0.7);         /* same subtle border as header card */
+    backdrop-filter: blur(6px);                     /* frosted glass effect, slightly stronger than header */
+    border: 1px solid rgba(167, 139, 250, 0.45);         /* same subtle border as header card */
     border-radius: 0 0 16px 16px;                    /* clockwise: top-left, top-right, bottom-right, bottom-left */
                                                      /* top corners are sharp so it connects flush to the header card above */
 
@@ -120,7 +123,14 @@ body {
     width: 80%;                                      /* manually sets width — unlike inline-block which auto-fits content */
 
     clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);  /* cuts the div into a trapezoid shape */
+    font-size: 20px;
 }
+
+
+.intro-note {
+    font-size: 17;
+}
+
 
 .Introduction-card hr {
     border: none;                                    /* wipes the browser's default ugly 3D hr style */
