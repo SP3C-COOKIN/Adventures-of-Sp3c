@@ -209,8 +209,8 @@ card.addEventListener("mousemove", function(move) {
     const y = move.clientY - rect.top;
     const cx = rect.width / 2
     const cy = rect.height / 2 
-    const rotateY = ((x - cx) / cx) * 50; 
-    const rotateX = ((y - cy) / cy) * -50;
+    const rotateY = ((x - cx) / cx) * 15; 
+    const rotateX = ((y - cy) / cy) * -15;
     card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     
     if (x > cx) {
