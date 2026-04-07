@@ -178,3 +178,19 @@ body {
     border-radius: 0 0 16px 16px;
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
 }
+
+.card {
+    height: 250px;
+    width: 200px;
+    background-color: #0a0a2e;
+    overflow: hidden; /* clips anything that escapes the card's boundry so while tilting the image doesn't go outside */
+    transition: transform 0.1s ease;
+    border-radius: 16px 16px 16px 16px;
+    margin: 15px;
+}
+
+    .card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover
+    }

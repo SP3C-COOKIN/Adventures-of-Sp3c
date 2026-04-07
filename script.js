@@ -198,3 +198,46 @@ else {
 }
 });
 
+
+let isFlipped = false;
+let flipTimer = null;
+
+const card = document.getElementById("Jojos-card");
+card.addEventListener("mousemove", function(move) {
+    const rect = card.getBoundingClientRect() 
+    const x = move.clientX - rect.left; /*move.clientX is the mouse's position from the left of the window and rect.left is the card's starting from the left of the window now subtracted so we know the pixels the mouse is away from the card and if then we check it's size and see if that difference in pixels half of the card or outside the card or 1/4th of it etc etc */
+    const y = move.clientY - rect.top;
+    const cx = rect.width / 2
+    const cy = rect.height / 2 
+    const rotateY = ((x - cx) / cx) * 50; 
+    const rotateX = ((y - cy) / cy) * -50;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    
+    if (x > cx) {
+        if (flipTimer === null)
+        flipTimer = setTimeout(function() {
+            console.log("Flip Left");
+            flipTimer = null;
+        }, 2000);
+
+
+    } else if (x < cx) {
+        if (flipTimer === null)
+        flipTimer = setTimeout(function() {
+            console.log("Flip Right");
+            flipTimer = null;
+    }, 2000);
+
+
+    } else {
+        clearTimeout(flipTimer);
+        flipTimer = null;
+        }
+});
+ 
+  card.addEventListener('mouseleave', function() {
+    clearTimeout(flipTimer);
+    flipTimer = null;
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+  });
+
