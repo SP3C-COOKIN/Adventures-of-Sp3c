@@ -108,9 +108,7 @@ body {
 
 /* Introduction Card */
 .Introduction-card {
-    /* layered background: tint over flower image */
-    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
-                      url('images/kashimo.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20));
     background-position: center;
     background-size: cover;
 
@@ -179,12 +177,10 @@ body {
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
 }
 
-.card {
+
+.card { /* Card's Properties */
     height: 250px;
     width: 200px;
-    background-color: #0a0a2e;
-    overflow: hidden; /* clips anything that escapes the card's boundry so while tilting the image doesn't go outside */
-    transition: transform 0.1s ease;
     border-radius: 16px 16px 16px 16px;
     margin: 15px;
     position: relative;
@@ -192,21 +188,81 @@ body {
     transition: transform 0.6s ease;
 }
 
-    .card img {
+
+.front-card, .back-card { /*front and back card properties */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* for safari */
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+}
+
+.back-card { /* extra and specific back card properties */
+    gap: 10px;
+    transform: rotateY(180deg);
+    border-radius: 16px 16px 16px 16px;
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/Jojo's-bg.jpg");
+    backdrop-filter: blur(4px);
+    background-position: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 0;
+}
+
+
+.back-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.img-wrapper { /* */
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.img-wrapper img {
     height: 100%;
     width: 100%;
-    object-fit: cover
-    }
+    object-fit: cover;
+    mix-blend-mode: multiply;
 
-    .front-card, .back-card {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-    }
+}
 
-    .back-card {
-        transform: rotate(180deg);
-    }
+.logo-section {
+    width: 100%;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    mix-blend-mode: multiply;
+    overflow: hidden;
+}
+
+.Jojos-wiki {
+    width: 80px;
+    height: 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    object-fit: cover;
+    justify-content: flex-start;
+    mix-blend-mode: multiply;
+}
+
+.spotify-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+}

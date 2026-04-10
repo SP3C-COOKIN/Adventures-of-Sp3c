@@ -215,13 +215,20 @@ card.addEventListener("mousemove", function(move) { // guard on mouse move
 
     const cx = rect.width / 2; // half of the card width
     const cy = rect.height / 2; // half of the card height
+    const deadArea = rect.width / 4;
+
 
     const rotateY = ((x - cx) / cx) * 15; // the more distance from center the more the tilt
     const rotateX = ((y - cy) / cy) * -15; // the more distance from the center the more the tilt
     
+        if (x > cx + deadArea || x < cx - deadArea) {
+        card.style.cursor = "pointer"
+    }
+    else {
+        card.style.cursor = "default"
+    }
     updateCard(rotateX, rotateY);
 });
-
 
 let isFlipped = false;
 let flipRotation = 0 // or 180
@@ -244,7 +251,6 @@ card.addEventListener("click", function(click) {
             isFlipped = false;
         }
         updateCard(); 
-
     }
 
 });
