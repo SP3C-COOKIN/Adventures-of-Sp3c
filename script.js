@@ -198,59 +198,65 @@ else {
 }
 });
 
-function updateCard(rotateX = 0, rotateY = 0) {
-    card.style.transform = `
-    perspective(800px)
-    rotateX(${rotateX}deg)
-    rotateY(${rotateY + flipRotation}deg)
-    `;
+
+function cardJs(cardsId) {
+    
+    let isFlipped = false;
+    let flipRotation = 0 // or 180
+
+    function updateCard(rotateX = 0, rotateY = 0) {
+        cardsId.style.transform = `
+        perspective(800px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY + flipRotation}deg)
+        `;
+    }
+
+    cardsId.addEventListener("mousemove", function(move) { // guard on mouse move
+        
+        const rect = cardsId.getBoundingClientRect() // card in the window
+        const x = move.clientX - rect.left; /*move.clientX is the mouse's position from the left of the window and rect.left is the card's starting from the left of the window now subtracted so we know the pixels the mouse is away from the card and if then we check it's size and see if that difference in pixels half of the card or outside the card or 1/4th of it etc etc */
+        const y = move.clientY - rect.top; 
+
+        const cx = rect.width / 2; // half of the card width
+        const cy = rect.height / 2; // half of the card height
+        const deadArea = rect.width / 4;
+
+
+        const rotateY = ((x - cx) / cx) * 15; // the more distance from center the more the tilt
+        const rotateX = ((y - cy) / cy) * -15; // the more distance from the center the more the tilt
+        
+            if (x > cx + deadArea || x < cx - deadArea) {
+            cardsId.style.cursor = "pointer"
+        }
+        else {
+            cardsId.style.cursor = "default"
+        }
+        updateCard(rotateX, rotateY);
+    });
+
+    cardsId.addEventListener("click", function(click) {
+
+        const rect = cardsId.getBoundingClientRect();
+        const x = click.clientX - rect.left;
+
+        const centreX = rect.width / 2;
+        const deadArea = rect.width / 4;
+
+        if (x > centreX + deadArea || x < centreX - deadArea) {
+
+            if (!isFlipped) {
+                flipRotation = 180
+                isFlipped = true;
+            } else {
+                flipRotation = 0;
+                isFlipped = false;
+            }
+            updateCard(); 
+        }
+
+    });
 }
 
-const card = document.getElementById("Jojos-card"); // take the card
-card.addEventListener("mousemove", function(move) { // guard on mouse move
-    
-    const rect = card.getBoundingClientRect() // card in the window
-    const x = move.clientX - rect.left; /*move.clientX is the mouse's position from the left of the window and rect.left is the card's starting from the left of the window now subtracted so we know the pixels the mouse is away from the card and if then we check it's size and see if that difference in pixels half of the card or outside the card or 1/4th of it etc etc */
-    const y = move.clientY - rect.top; 
-
-    const cx = rect.width / 2; // half of the card width
-    const cy = rect.height / 2; // half of the card height
-    const deadArea = rect.width / 4;
-
-
-    const rotateY = ((x - cx) / cx) * 15; // the more distance from center the more the tilt
-    const rotateX = ((y - cy) / cy) * -15; // the more distance from the center the more the tilt
-    
-        if (x > cx + deadArea || x < cx - deadArea) {
-        card.style.cursor = "pointer"
-    }
-    else {
-        card.style.cursor = "default"
-    }
-    updateCard(rotateX, rotateY);
-});
-
-let isFlipped = false;
-let flipRotation = 0 // or 180
-
-card.addEventListener("click", function(click) {
-
-    const rect = card.getBoundingClientRect();
-    const x = click.clientX - rect.left;
-
-    const centreX = rect.width / 2;
-    const deadArea = rect.width / 4;
-
-    if (x > centreX + deadArea || x < centreX - deadArea) {
-
-        if (!isFlipped) {
-            flipRotation = 180
-            isFlipped = true;
-        } else {
-            flipRotation = 0;
-            isFlipped = false;
-        }
-        updateCard(); 
-    }
-
-});
+cardJs(document.getElementById("Jojos-card"))
+cardJs(document.getElementById("cowboy-bebop-card"))

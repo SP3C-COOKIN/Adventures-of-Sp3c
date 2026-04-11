@@ -177,6 +177,11 @@ body {
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
 }
 
+.cards-container {
+    display: flex;
+    justify-content: start;
+    align-self: flex-start;
+}
 
 .card { /* Card's Properties */
     height: 250px;
@@ -188,13 +193,12 @@ body {
     transition: transform 0.6s ease;
 }
 
-
 .front-card, .back-card { /*front and back card properties */
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden; /* for safari */
     display: flex;
@@ -202,67 +206,102 @@ body {
     background-size: cover;
 }
 
-.back-card { /* extra and specific back card properties */
-    gap: 10px;
-    transform: rotateY(180deg);
-    border-radius: 16px 16px 16px 16px;
-    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
-                    url("images/Jojo's-bg.jpg");
-    backdrop-filter: blur(4px);
-    background-position: top;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0;
-    gap: 0;
-}
-
-
-.back-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.img-wrapper { /* */
+.front-card { /* */
     width: 100%;
     height: 100%;
     border-radius: 16px;
     overflow: hidden;
 }
-.img-wrapper img {
+.front-card img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     mix-blend-mode: multiply;
+}
+
+.back-card { /* extra and specific back card properties */
+    gap: 10px;
+    transform: rotateY(180deg);
+    border-radius: 16px 16px 16px 16px;
+    backdrop-filter: blur(4px);
+    background-position: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    gap: 0;
 
 }
 
-.logo-section {
-    width: 100%;
-    flex: 2;
+#Jojos-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/Jojo's-bg.jpg");
+}
+
+#cowboy-bebop-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/Ed-Wilding.gif")
+}
+
+
+#Jojos-card .Title {
+    width: auto;
+    height: auto;
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    }
+
+
+#cowboy-bebop-card .Title {
+    width: 200px;
+    height: auto;
+    align-items: flex-end;
+}
+
+.Title img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.Wiki {
+    display: flex;
+    justify-content: center;
     align-items: center;
     mix-blend-mode: multiply;
-    overflow: hidden;
 }
 
-.Jojos-wiki {
+#Jojos-card .Wiki {
     width: 80px;
     height: 60px;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    object-fit: cover;
-    justify-content: flex-start;
+}
+
+#cowboy-bebop-card .Wiki {
+    position: absolute;
+    top: 4px;
+    right: 3px;
+    width: 40px;
+    height: 40px;
+}
+
+#Jojos-card .Wiki img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     mix-blend-mode: multiply;
 }
 
-.spotify-link {
-    flex: 1;
+.Wiki img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.Audio-link {
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 1px;
 }
