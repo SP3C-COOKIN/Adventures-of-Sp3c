@@ -264,6 +264,11 @@ body {
     width: 200px;
     height: auto;
     align-items: flex-end;
+    margin-top: auto;
+}
+
+.titleSong {
+    cursor: pointer;
 }
 
 .Title img {
@@ -289,6 +294,7 @@ body {
     right: 3px;
     width: 40px;
     height: 40px;
+    
 }
 
 #Jojos-card .Wiki img {

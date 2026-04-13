@@ -258,19 +258,34 @@ function cardJs(cardsId) {
     });
 }
 
-cardJs(document.getElementById("Jojos-card"))
-cardJs(document.getElementById("cowboy-bebop-card"))
+cardJs(document.getElementById("Jojos-card"));
+cardJs(document.getElementById("cowboy-bebop-card"));
 
-const bebopMusic = document.getElementById("Tank"); 
-const tankBtn = document.getElementById("Tank-btn");
 
-tankBtn.addEventListener("click", () => {
-    if (bebopMusic.paused) {
-        bebopMusic.play();
-        btn.textContent = "⏸ Pause"
-    }
-    else {
-        bebopMusic.pause()
-        btn.textContent = "3 2 1, Let's JAM"
-    }
-});         
+function turnMusic(titleSong, music) {
+
+    titleSong.addEventListener("click", () => {
+
+        if (music.paused) {
+
+            music.play();
+
+        } else {
+
+            music.pause();
+
+        }
+
+    });
+
+}
+
+// Grab the elements outside
+const Title = document.querySelectorAll(".titleSong");
+const Audio = document.querySelectorAll(".Song");
+
+Title.forEach((title, index) => {
+    turnMusic(title, Audio[index]);
+});
+
+turnMusic(Title, Audio);
