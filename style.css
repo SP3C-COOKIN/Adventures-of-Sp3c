@@ -2,7 +2,10 @@
     font-family: 'SDGlitch';
     src: url("fonts/SdglitchdemoRegular-YzROj.ttf") format("truetype");
 }
-
+@font-face {
+    font-family: 'JJK-font';
+    src: url('fonts/Jujutsu\ Kaisen.ttf');
+}
 
 h1 {
     text-align: center;
@@ -132,7 +135,7 @@ body {
 
 
 .intro-note {
-    font-size: 17;
+    font-size: 17px;
 }
 
 
@@ -183,7 +186,34 @@ body {
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
 }
 
+.Favourite-Shows {
+    font-family: 'JJK-font';
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow:
+    0 0 5px rgba(255, 20, 80, 0.8),
+    0 0 15px rgba(200, 0, 180, 0.6),
+    0 0 30px rgba(140, 0, 255, 0.3);
+    background: transparent;
+}
 
+.Favourite-Shows::after  {
+    content: "";
+    display: block;
+    
+    width: 70%;
+    height: 3px;
+    
+    margin: 10px auto;
+    
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(167,139,250,0.5),
+        transparent
+    );
+}
 
 .cards-container {
     display: flex;
@@ -381,7 +411,7 @@ body {
     bottom: 3px;
 }
 
-#Mob-pyscho-card .Title img {
+#Mob-psycho-card .Title img {
     width: 170px;
     height: 170px;
 }

@@ -3,8 +3,11 @@ const canvas = document.getElementById("multiverse")
 const ctx = canvas.getContext('2d')
 
 /* setting the canvas's width and height*/
-canvas.width = window.innerWidth
-canvas.height = 500
+
+window.addEventListener('resize', () => { 
+canvas.width = window.innerWidth;
+canvas.height = 500;
+})
 
 /* Creating different worlds with properties */
 let Continuum_Database = [
@@ -268,19 +271,14 @@ cardJs(document.getElementById("Mob-psycho-card"))
 function turnMusic(titleSong, music) {
 
     titleSong.addEventListener("click", () => {
+        const isPlaying = !music.paused;
 
-        if (music.paused) {
+        document.querySelectorAll("audio").forEach(a => a.pause());
 
+        if (!isPlaying) {
             music.play();
-
-        } else {
-
-            music.pause();
-
         }
-
     });
-
 }
 
 // Grab the elements outside

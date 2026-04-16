@@ -1,0 +1,21 @@
+{
+  "name": "sp3c",
+  "version": "1.0.0",
+  "description": "A personal journal of a fictional multiversal traveler exploring different worlds and realities.  \r The project presents his experiences through an interactive web interface, blending storytelling with visual design.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SP3C-COOKIN/Adventures-of-Sp3c.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SP3C-COOKIN/Adventures-of-Sp3c/issues"
+  },
+  "homepage": "https://github.com/SP3C-COOKIN/Adventures-of-Sp3c#readme"
+}
