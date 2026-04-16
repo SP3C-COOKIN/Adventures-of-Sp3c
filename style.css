@@ -183,9 +183,12 @@ body {
     background: radial-gradient(ellipse at center, #0a0a2e 0%, #000005 100%);
 }
 
+
+
 .cards-container {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+    margin: 0 20px;
     align-self: flex-start;
 }
 
@@ -197,7 +200,9 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s ease;
+    z-index: 1;
 }
+
 
 .front-card, .back-card { /*front and back card properties */
     position: absolute;
@@ -212,7 +217,7 @@ body {
     background-size: cover;
 }
 
-.front-card { /* */
+.front-card { 
     width: 100%;
     height: 100%;
     border-radius: 16px;
@@ -222,7 +227,6 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    mix-blend-mode: multiply;
 }
 
 .back-card { /* extra and specific back card properties */
@@ -237,19 +241,15 @@ body {
     justify-content: space-between;
     padding: 10px 0;
     gap: 0;
-
+}
+.back-card img {
+    object-fit: cover;
 }
 
 #Jojos-card .back-card {
     background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
                     url("images/jojos-wallpaper-back.gif");
 }
-
-#cowboy-bebop-card .back-card {
-    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
-                    url("images/Ed-Wilding.gif")
-}
-
 
 #Jojos-card .Title {
     width: auto;
@@ -260,32 +260,29 @@ body {
     }
 
 
+#Jojos-card .Wiki {
+    width: 80px;
+    height: 60px;
+}
+
+
+#Jojos-card .Wiki img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+#cowboy-bebop-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/Ed-Wilding.gif")
+}
+
 #cowboy-bebop-card .Title {
     width: 200px;
     height: auto;
     align-items: flex-end;
     margin-top: auto;
-}
-
-.titleSong {
-    cursor: pointer;
-}
-
-.Title img {
-    width: 200px;
-    height: auto;
-    object-fit: contain;
-}
-
-.Wiki {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#Jojos-card .Wiki {
-    width: 80px;
-    height: 60px;
 }
 
 #cowboy-bebop-card .Wiki {
@@ -297,11 +294,116 @@ body {
     
 }
 
-#Jojos-card .Wiki img {
-    width: 100%;
+#One-Piece-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/one-piece-background.gif");
+    position: relative;
+}
+
+#One-Piece-card .Wiki{
+    position:absolute;
+    width: 50px;
+    height: auto;
+    top: 4px;
+    right: 3px;
+}
+
+#One-Piece-card .Video video {
+    width: 50px;
+    height: auto;
+    position: absolute;
+    object-fit: cover;
+    transition: all 0.3 ease;
+    cursor:pointer;
+    top: 4px;
+    left: 1px;
+}
+
+#One-Piece-card .Video video.playing {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;  
+}
+
+#One-Piece-card .Title {
+    width: 250px;
+    height: auto;
+    align-items: flex-end;
+    margin-top: auto;
+    cursor: pointer;
+}
+
+#Dorohedoro-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/dorohedoro-gif.gif")
+}
+
+#Dorohedoro-card .Wiki {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+}
+
+#Dorohedoro-card .Wiki img {
+    width: 50px;
     height: auto;
     object-fit: contain;
 }
+
+#Dorohedoro-card .Title {
+    position: absolute;
+    align-items: flex-end;
+    margin-top: auto;
+    bottom: 1px;
+}
+
+#Mob-psycho-card .back-card {
+    background-image: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20)),
+                    url("images/mob-psycho-poster.jpg")
+}
+
+#Mob-psycho-card .Wiki {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+}
+
+#Mob-psycho-card .Wiki img {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+}
+
+#Mob-psycho-card .Title {
+    position: absolute;
+    align-items: flex-end;
+    margin-top: auto;
+    bottom: 3px;
+}
+
+#Mob-pyscho-card .Title img {
+    width: 170px;
+    height: 170px;
+}
+
+.Title img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.titleSong {
+    cursor: pointer;
+}
+
+
+.Wiki {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
 
 .Wiki img {
     width: 100%;
@@ -315,6 +417,8 @@ body {
     align-items: center;
     padding: 1px;
 }
+
+
 
 .btnStyle {
     color: #c8b8ff;

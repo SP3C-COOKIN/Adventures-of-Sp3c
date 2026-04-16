@@ -260,6 +260,9 @@ function cardJs(cardsId) {
 
 cardJs(document.getElementById("Jojos-card"));
 cardJs(document.getElementById("cowboy-bebop-card"));
+cardJs(document.getElementById("One-Piece-card"));
+cardJs(document.getElementById("Dorohedoro-card"));
+cardJs(document.getElementById("Mob-psycho-card"))
 
 
 function turnMusic(titleSong, music) {
@@ -288,4 +291,27 @@ Title.forEach((title, index) => {
     turnMusic(title, Audio[index]);
 });
 
-turnMusic(Title, Audio);
+
+
+const video = document.getElementById("franky-super") // took franky video
+
+    video.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        
+        if (video.paused || video.currentTime === 0) {
+            video.classList.add("playing")
+            video.play();
+        }
+
+        else if (!video.paused) {
+            video.pause();
+        }
+        else {
+            video.play();
+        }
+    });
+
+    video.addEventListener("ended", () => { //if video ended
+        video.load(); // load it again
+        video.classList.remove("playing");
+    });
