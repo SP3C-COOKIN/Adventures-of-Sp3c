@@ -4,10 +4,8 @@ const ctx = canvas.getContext('2d')
 
 /* setting the canvas's width and height*/
 
-window.addEventListener('resize', () => { 
 canvas.width = window.innerWidth;
 canvas.height = 500;
-})
 
 /* Creating different worlds with properties */
 let Continuum_Database = [
