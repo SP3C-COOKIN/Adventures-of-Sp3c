@@ -1,7 +1,7 @@
-const authorName = document.getElementById("author-name")
-const textInput = document.getElementById("comment-text")
-const submitButton = document.getElementById("submit-button")
-const commentsContainer = document.getElementById("comments-container")
+const authorName = document.getElementById("author-name");
+const textInput = document.getElementById("comment-text");
+const submitButton = document.getElementById("submit-button");
+const commentsContainer = document.getElementById("comments-container");
 
 // US TAKING DATA FROM DATABASE
 async function loadComments() { 
@@ -22,16 +22,16 @@ async function loadComments() {
 
 // DATA ENTERING BY USER
 submitButton.addEventListener("click", async () => { 
-    const author = authorInput.value;
-    const text = commentText.value;
+    const author = authorName.value;
+    const text = textInput.value;
 
     await fetch("http://localhost:3000/comments", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({author, text})
     });
-    authorInput.value = "";
-    commentText.value = "";
+    authorName.value = "";
+    textInput.value = "";
 
     loadComments();
 });
