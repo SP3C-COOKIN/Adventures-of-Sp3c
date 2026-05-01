@@ -63,7 +63,7 @@ body {
     display: flex;    
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 0px 40px;
+    padding: 20px 20px 0px 40px; /* yea better remove this or use percentage here nig- */
 }
 
 .header-card {
@@ -76,7 +76,7 @@ body {
     backdrop-filter: blur(5px);                      /* frosted glass blur effect */
     border: 1px solid rgba(167, 139, 250, 0.45);         /* subtle white border to define the card edges */
     border-radius: 16px;                             /* sands down the sharp corners — same radius on all 4 */
-    padding: 40px;
+    padding: 40px; 
     font-size: 15px;
 }
 
